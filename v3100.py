@@ -91,20 +91,13 @@ def reset_cube():
 def input(key):
     print(key)
 
-    if key == 'j':
-        cube.x += 1 
-    if key == 'g':
-        cube.x -= 1 
-    if key == 'y':
-        cube.y += 1 
-    if key == 'h':
-        cube.y -= 1
-    if key == 'u':
-        cube.z += 1
-    if key == 't':
-        cube.z -= 1
-    if key == 'r':
-        reset_cube()
+    if key == 'j': cube.x += 1 
+    if key == 'g': cube.x -= 1 
+    if key == 'y': cube.y += 1 
+    if key == 'h': cube.y -= 1
+    if key == 'u': cube.z += 1
+    if key == 't': cube.z -= 1
+    if key == 'r': reset_cube()
 
 cam = EditorCamera()
 cam.position = (5, 5, -10)
