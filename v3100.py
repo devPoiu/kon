@@ -4,6 +4,10 @@ from ursina import *
 
 app = Ursina()
 
+window.color = color.rgb(20, 24, 30)
+# window.color = color.rgb(50, 50, 50)
+# window.color = color.rgb(200, 200, 200)
+
 def create_axis_lines(length=15):
     Entity(model=Mesh(vertices=[(-length, 0, 0), (length, 0, 0)], mode='line'), color=color.red, thickness=3)
     Entity(model=Mesh(vertices=[(0, -length, 0), (0, length, 0)], mode='line'), color=color.green, thickness=3)
@@ -20,7 +24,7 @@ cube = Entity(
     position=(0.5, 0.5, 0.5)
 )
 
-pos = Vec3(-0.5, -0.5, -0.5)
+pos = (-0.5, -0.5, -0.5)
 vectorLength = 0.85
 
 vector_i = Entity(
@@ -53,15 +57,19 @@ vector_k = Entity(
     origin=(-0.5, 0, 0)
 )
 
-my_label = Text(
+hud = Text(
     text="", 
     position=(-0.85, 0.45), 
     scale=1.5, 
-    color=color.yellow
+    color=color.black
 )
 
 def update():
     rot_speed = 120
+    if held_keys['q']:
+        cube.rotation_z -= time.dt * rot_speed
+    if held_keys['e']:
+        cube.rotation_z += time.dt * rot_speed
     if held_keys['right arrow']:
         cube.rotation_y += time.dt * rot_speed
     if held_keys['left arrow']:
@@ -75,13 +83,13 @@ def update():
     j_vec = cube.up
     k_vec = cube.forward
 
-    matrix_text = (
+    matrix = (
         f"i (X): [{i_vec.x:6.2f}, {i_vec.y:6.2f}, {i_vec.z:6.2f}]\n"
         f"j (Y): [{j_vec.x:6.2f}, {j_vec.y:6.2f}, {j_vec.z:6.2f}]\n"
         f"k (Z): [{k_vec.x:6.2f}, {k_vec.y:6.2f}, {k_vec.z:6.2f}]"
     )
     
-    my_label.text = matrix_text
+    hud.text = matrix
 
 def reset_cube():
     cube.position = (0.5, 0.5, 0.5)
