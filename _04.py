@@ -97,8 +97,8 @@ for r in range(3):
     matrix_fields.append(row_fields)
 
 local_i = Vec3(1, 0, 0)
-local_j = Vec3(0, 2, 0)
-local_k = Vec3(0, 0, 3)
+local_j = Vec3(0, 1, 0)
+local_k = Vec3(0, 0, 1)
 
 def to_ursina_coords(v):
     return Vec3(v.x, v.z, v.y)
