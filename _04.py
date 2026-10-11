@@ -10,15 +10,15 @@ window.color = color.rgb(200, 200, 200)
 
 def create_axis_lines(length=15, tick_size=0.1):
     Entity(model=Mesh(vertices=[(-length, 0, 0), (length, 0, 0)], mode='line'), color=color.red, thickness=3)
-    Entity(model=Mesh(vertices=[(0, 0, -length), (0, 0, length)], mode='line'), color=color.blue, thickness=3) # Синяя ось (Y)
-    Entity(model=Mesh(vertices=[(0, -length, 0), (0, length, 0)], mode='line'), color=color.green, thickness=3) # Зеленая ось (Z)
+    Entity(model=Mesh(vertices=[(0, 0, -length), (0, 0, length)], mode='line'), color=color.blue, thickness=3)
+    Entity(model=Mesh(vertices=[(0, -length, 0), (0, length, 0)], mode='line'), color=color.green, thickness=3)
 
     tolch = 0.0075
     for i in range(-length, length + 1):
         if i == 0: continue
         Entity(model='cube', position=(i, 0, 0), scale=(tolch, tick_size * 2, tolch), color=color.red)
-        Entity(model='cube', position=(0, 0, i), scale=(tick_size * 2, tolch, tolch), color=color.blue) # Засечки на Y (синие)
-        Entity(model='cube', position=(0, i, 0), scale=(tick_size * 2, tolch, tolch), color=color.green) # Засечки на Z (зеленые)
+        Entity(model='cube', position=(0, 0, i), scale=(tick_size * 2, tolch, tolch), color=color.blue)
+        Entity(model='cube', position=(0, i, 0), scale=(tick_size * 2, tolch, tolch), color=color.green)
 
 create_axis_lines()
 
